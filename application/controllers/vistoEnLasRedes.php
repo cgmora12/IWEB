@@ -65,6 +65,7 @@
 			}
 		}
 
+
 		// Funcionalidad logout
 		public function hacerLogout()
 		{
@@ -74,6 +75,25 @@
 							window.location.href = 'login';
 				   </script>"
 			;
+		}
+
+
+		// Funcionalidad registro
+		public function registro()
+		{
+			// Si el usuario ya se ha logueado, que entre al index
+			if($this->session->userdata('usuarioLogueado')) {
+				echo "<script>  alert('Usuario logueado: " . $this->session->userdata('usuarioLogueado') . "');
+								window.location.href = 'index';
+					   </script>"
+				;
+
+				$this->load->view('/vistoEnLasRedes/index');
+			}
+			// Si aún no se ha loguedao, que tenga que loguearse previamente.
+			else {
+				$this->load->view('/vistoEnLasRedes/registro');
+			}
 		}
 	}
 ?>

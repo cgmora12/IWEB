@@ -5,10 +5,11 @@
 		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
 		<meta charset="UTF-8">
 
-		<!-- Include de bootstrap -->
-		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 		<!-- Include de JQuery -->
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<!-- Include de bootstrap -->
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 		<!-- Script de JQuery -->
 		<script type="text/javascript">
@@ -104,10 +105,10 @@
 				<br>
 
 				<div class="form-group">
-					<a href="recuperarContrasenya.php">¿Olvidó la contraseña? Recuperar contraseña</a>
+					<a href="recuperarContrasenya">¿Olvidó la contraseña? Recuperar contraseña</a>
 					<br>
 					<br>
-					<a href="registro.html">¿Aún no tiene una cuenta? Regístrese</a> 
+					<a href="registro">¿Aún no tiene una cuenta? Regístrese</a> 
 				</div>
 			</form>
 
