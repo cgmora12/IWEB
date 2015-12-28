@@ -192,9 +192,9 @@
 				});
 
 				$('#fechaNacimientoDiv').datepicker({
-		            format: 'dd/mm/yyyy',
-		            startDate: '01/01/1900',
-		            endDate: '30/12/2020'
+		            format: 'dd-mm-yyyy',
+		            startDate: '01-01-1900',
+		            endDate: '30-12-2020'
 		        });
 			});
 		</script>
@@ -231,7 +231,7 @@
   			</div>
 
 
-			<form class="form" role="form" method="POST" action="javascript:alert('intento de registro');" name="formRegistro" id="formRegistro">
+			<form class="form" role="form" method="POST" action="hacerRegistro" name="formRegistro" id="formRegistro">
 				<!-- Información para acceder a la web. -->
 				<legend class="legendForm">Información de acceso</legend>
 

@@ -35,8 +35,6 @@
 								window.location.href = 'index';
 					   </script>"
 				;
-
-				$this->load->view('/vistoEnLasRedes/index');
 			}
 			// Si aún no se ha loguedao, que tenga que loguearse previamente.
 			else {
@@ -59,7 +57,7 @@
 			}
 			else {
 				echo "<script>  alert('Usuario y/o contraseña incorrectos');
-								window.location.href = 'login';
+								window.history.back();
 					   </script>"
 				;
 			}
@@ -87,12 +85,30 @@
 								window.location.href = 'index';
 					   </script>"
 				;
-
-				$this->load->view('/vistoEnLasRedes/index');
 			}
 			// Si aún no se ha loguedao, que tenga que loguearse previamente.
 			else {
 				$this->load->view('/vistoEnLasRedes/registro');
+			}
+		}
+
+		public function hacerRegistro()
+		{
+			$resultados = $this->Usuario_m->insert_usuarioRegistrado($_POST['username'], $_POST['password'], $_POST['email'], 
+				$_POST['avatar'], $_POST['pais'], $_POST['provincia'], $_POST['localidad'], $_POST['fechaNacimientoInput'], 
+				$_POST['sexo'], $_POST['paginaWeb']);
+
+			if($resultados) {
+				echo "<script>  alert('Usuario registrado correctamente');
+							window.location.href = 'login';
+				   </script>"
+				;
+			}
+			else {
+				echo "<script>  alert('Nombre de usuario y/o email ya registrados.');
+							window.history.back();
+				   </script>"
+				;
 			}
 		}
 	}
