@@ -19,13 +19,8 @@ class vistoEnLasRedes extends CI_Controller {
 		$this->load->view('/vistoEnLasRedes/index', $data);
 	}
 
-	public function copia()
+	public function login()
 	{
-		$data['titulo'] = "Listado de la Agenda";
-
-		$data['cuantos'] = $this->Agenda_m->count_all();
-		$data['lista'] = $this->Agenda_m->get_all();
-
-		$this->load->view('/vistoEnLasRedes/copia', $data);
+		$this->load->view('/vistoEnLasRedes/login');
 	}
 }
