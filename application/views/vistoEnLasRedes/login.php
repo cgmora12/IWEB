@@ -40,7 +40,6 @@
 						$("#password").addClass("error");
 						scrollToTop();
 					}
-
 				});
 
 				$("#username").change(function() {
@@ -73,14 +72,15 @@
 		</header>
 
 		<main class="container">
-			<form class="form" role="form" method="POST" action="javascript:alert('intento de login');" id="formLogin">
+			<!-- Lo de action="hacerLogin" es porque en el controller hay un método que se llama así -->
+			<form class="form" role="form" method="POST" action="hacerLogin" id="formLogin" name="formLogin">
 				<!-- Información para acceder a la web. -->
 				<legend class="legendForm">Datos del usuario</legend>
 
 				<div class="form-group">
 					<label class="control-label" for="username">UserName:</label>
 					<span class="obligatorio">(*)</span>
-					<input class="form-control" type="text" id="username" placeholder="Nombre de usuario">
+					<input class="form-control" type="text" id="username" name="username" placeholder="Nombre de usuario">
 
 					<div id="errUsername" class="alert alert-danger">
 						Debe introducir un nombre de usuario.
@@ -90,7 +90,7 @@
 				<div class="form-group">
 					<label class="control-label" for="password">Contraseña:</label>
 					<span class="obligatorio">(*)</span>
-					<input class="form-control" type="password" id="password" placeholder="Contraseña">
+					<input class="form-control" type="password" id="password" name="password" placeholder="Contraseña">
 
 					<div id="errPassword" class="alert alert-danger">
 						Debe introducir una contraseña.
@@ -99,7 +99,7 @@
 				<br>
 
 				<div class="form-group">
-					<input class="btn btn-primary" type="submit" value="Login">
+					<input class="btn btn-primary" type="submit" name="loginSubmitButton" id="loginSubmitButton" value="Login">
 				</div>
 				<br>
 
