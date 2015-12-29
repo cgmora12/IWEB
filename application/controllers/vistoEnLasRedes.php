@@ -42,7 +42,7 @@
 			// Si la URL es   http://localhost:8080/iweb/index.php/vistoEnLasRedes
 			// redirecciona a http://localhost:8080/iweb/index.php/vistoEnLasRedes/index
 			else {
-				header('Location: vistoEnLasRedes/index');
+				header('Location: /iweb/index.php/vistoEnLasRedes/index');
 			}
 		}
 

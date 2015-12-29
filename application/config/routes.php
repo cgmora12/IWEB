@@ -41,7 +41,7 @@
 $route['default_controller'] = "home";
 $route['404_override'] = '';
 
-/* Rutas personalizadas
+/* Rutas personalizadas, para hacerlo un poco más API REST
  * Lo de la izquierda es la URL del navegador - Lo de la derecha es el método del controlador al cual se llamará
  */
 $route['vistoEnLasRedes/aportaciones/(:num)'] = "/vistoEnLasRedes/verAportacion/$1";
