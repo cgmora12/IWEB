@@ -249,10 +249,21 @@
 
 		public function comentarAportacion($id)
 		{
-			echo "<script>  alert('Comentar aportación " . $id . "');
-								window.history.back();
-					</script>"
-			;
+			$resultados = $this->Aportacion_m->insert_comentarioAportacion($_POST['comentario'], 
+													$this->session->userdata('usuarioLogueado'), $id);
+
+			if($resultados) {
+				echo "<script>  alert('Comentario añadido correctamente');
+							window.location.href = '/iweb/index.php/vistoEnLasRedes/aportaciones/" . $id .  "';
+				   </script>"
+				;
+			}
+			else {
+				echo "<script>  alert('No se ha podido guardar el comentario');
+							window.history.back();
+				   </script>"
+				;
+			}
 		}
 	}
 ?>

@@ -123,7 +123,7 @@
 									<?php echo $comentario->autorUserName; ?>
 								</a>
 				<?php
-								echo '<br><b>Fecha:</b> ' . $comentario->fecha;
+								echo '<br><b>Fecha:</b> ' . date('d-m-Y', strtotime($comentario->fecha));
 				?>
 								<p style="color: black">
 				<?php
