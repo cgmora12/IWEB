@@ -27,6 +27,12 @@
 			$resultados = $this->db->insert('Usuario', $data);
 			return $resultados;
 		}
-	}
 
+		function get_usuarioRecuperacionDatos($email) {
+			$this->db->select('userName, password');
+			$this->db->where('email', $email);
+
+			return $this->db->get("Usuario")->result();
+		}
+	}
 ?>

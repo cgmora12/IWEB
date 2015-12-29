@@ -105,11 +105,98 @@
 				;
 			}
 			else {
-				echo "<script>  alert('Nombre de usuario y/o email ya registrados.');
+				echo "<script>  alert('Nombre de usuario y/o email ya registrados');
 							window.history.back();
 				   </script>"
 				;
 			}
+		}
+
+		// Funcionalidad recuperar contraseña
+		public function recuperarContrasenya()
+		{
+			// Si el usuario ya se ha logueado, que entre al index
+			if($this->session->userdata('usuarioLogueado')) {
+				echo "<script>  alert('Usuario logueado: " . $this->session->userdata('usuarioLogueado') . "');
+								window.location.href = 'index';
+					   </script>"
+				;
+			}
+			// Si aún no se ha loguedao, que tenga que loguearse previamente.
+			else {
+				$this->load->view('/vistoEnLasRedes/recuperarContrasenya');
+			}
+		}
+
+		public function hacerRecuperacionDatos()
+		{
+			$email = $_POST['email'];
+			$resultados = $this->Usuario_m->get_usuarioRecuperacionDatos($email);
+
+			// Si es correcto sólo devolverá un usuario
+			if(count($resultados) == 1) {
+				// Enviar email
+				/*
+				 * El email no funciona. La función PHP me devuelve true pero no los recibo ni en hotmail ni el gmail. 
+				 * He buscado información, he configurado Xampp y seguido varías guías pero no consigo que funcione.
+				 * Email creado para el proyecto: 
+				 * Correo: vistoenlasredesIW@gmail.com
+				 * Contraseña: vistoenlasredesIW1A
+				*/
+				/*
+				// Asunto
+				$asunto = 'Visto en las redes Ingeniería Web - Recuperación datos de acceso';
+				// El mensaje
+				$mensaje = "Buenas,\r\n
+							Ha recibido este mensaje porque ha solicitado la recuperación de los 
+							datos de su cuenta en la web Visto en las redes de Ingeniería Web\r\n
+							Por favor, ignore este mensaje en el caso que no haya solicitado la recuperación de sus datos.\r\n
+							\r\n
+							Sus datos de acceso son: \r\n
+							UserName: " . $resultados[0]->userName . "\r\n
+							Password: " . $resultados[0]->password . "\r\n
+							Email: " . $email . "\r\n
+							\r\n
+							--------- \r\n
+							El equipo de Visto en las redes de Ingeniería Web"
+				;
+				// Si cualquier línea es más larga de 70 caracteres, se debería usar wordwrap()
+				$mensaje = wordwrap($mensaje, 70, "\r\n");
+
+				// Cabeceras
+				$cabeceras = 'From: no_reply@vistoenlasredesIW.com';
+
+				// Enviarlo
+				$enviado = mail($email, $asunto, $mensaje, $cabeceras);
+
+				if($enviado) {
+					echo "<script>  alert('Se ha enviado un email a " . $email . " con los datos para acceder a la web');
+									window.location.href = 'login';
+						   </script>"
+					;
+				}
+				else {
+					echo "<script>  alert('No se ha podido enviar el email a " . $email . ". Por favor, vuelva a intentarlo');
+									window.location.href = 'login';
+						   </script>"
+					;
+				}
+				*/
+
+				// Como lo del email no funciona, muestro los datos si el email es correcto.
+				echo "<script>  alert('Los datos del usuario con email " . $email . " son:\\n";
+				echo "\\nUserName: " . $resultados[0]->userName . "\\n";
+				echo "\\nContraseña: " . $resultados[0]->password . "');";
+				echo "window.location.href = 'login';";
+				echo "</script>";
+			}
+			else {
+				echo "<script>  alert('El email introducido no corresponde con ningún usuario registrado');
+								window.history.back();
+					   </script>"
+				;
+			}
+			
 		}
 	}
 ?>
