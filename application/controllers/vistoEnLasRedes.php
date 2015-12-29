@@ -3,6 +3,16 @@
 	// La codificación de los mensajes para todo el archivo.
 	header('Content-Type: text/html; charset=UTF-8');
 
+	function endsWith($str1, $str2)
+	{
+	    $length = strlen($str2);
+	    if ($length == 0) {
+	        return true;
+	    }
+
+	    return (substr($str1, -$length) === $str2);
+	}
+
 	class vistoEnLasRedes extends CI_Controller {
 
 		function __construct(){
@@ -12,17 +22,28 @@
 
 			$this->load->library('session');
 			$this->load->model("Usuario_m", '', TRUE);
+			$this->load->model("Aportacion_m", '', TRUE);
 		}
 
 		// Página principal
 		public function index()
 		{
-			$data['titulo'] = "Listado de la Agenda";
+			// Porque si no está el sufijo 'index' en la URL, el logout no funciona bien.
+			// Si la URL tiene el sufijo 'index'
+			if(endsWith($_SERVER['PHP_SELF'], "index")) {
 
-			$data['cuantos'] = $this->Agenda_m->count_all();
-			$data['lista'] = $this->Agenda_m->get_all();
+				$data['titulo'] = "Listado de la Agenda";
 
-			$this->load->view('/vistoEnLasRedes/index', $data);
+				$data['cuantos'] = $this->Agenda_m->count_all();
+				$data['lista'] = $this->Agenda_m->get_all();
+
+				$this->load->view('/vistoEnLasRedes/index', $data);
+			}
+			// Si la URL es   http://localhost:8080/iweb/index.php/vistoEnLasRedes
+			// redirecciona a http://localhost:8080/iweb/index.php/vistoEnLasRedes/index
+			else {
+				header('Location: vistoEnLasRedes/index');
+			}
 		}
 
 
@@ -112,6 +133,7 @@
 			}
 		}
 
+
 		// Funcionalidad recuperar contraseña
 		public function recuperarContrasenya()
 		{
@@ -196,7 +218,41 @@
 					   </script>"
 				;
 			}
-			
+		}
+
+
+		// Funcionalidad ver aportación con comentarios
+		public function verAportacion($id)
+		{
+			$datos['idAportacion'] = $id;
+			$resultados = $this->Aportacion_m->get_aportacion($id);
+
+			// Si es correcto sólo devolverá una aportación
+			if(count($resultados) == 1) {
+				// Aportación (ya tiene la categoría)
+				$datos['aportacion'] = $resultados[0];
+				// Etiquetas
+				$resultadosEtiquetas = $this->Aportacion_m->get_etiquetasAportacion($id);
+				$datos['listaEtiquetas'] = $resultadosEtiquetas;
+				$datos['numEtiquetas'] = count($resultadosEtiquetas);
+				// Comentarios
+				$resultadosComentarios = $this->Aportacion_m->get_comentariosAportacion($id);
+				$datos['listaComentarios'] = $resultadosComentarios;
+				$datos['numComentarios'] = count($resultadosComentarios);
+
+				$this->load->view('/vistoEnLasRedes/verAportacion', $datos);
+			}
+			else {
+				echo "No existe ninguna aportación con id " . $id;
+			}
+		}
+
+		public function comentarAportacion($id)
+		{
+			echo "<script>  alert('Comentar aportación " . $id . "');
+								window.history.back();
+					</script>"
+			;
 		}
 	}
 ?>
