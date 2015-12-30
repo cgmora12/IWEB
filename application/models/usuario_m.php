@@ -34,5 +34,21 @@
 
 			return $this->db->get("Usuario")->result();
 		}
+
+		function aumentarNumComentarios($username) {
+			$this->db->select('numComentarios');
+			$this->db->where('userName', $username);
+			$resultados = $this->db->get("Usuario")->result();
+
+			$numComentarios = $resultados[0]->numComentarios;
+			$numComentarios++;
+
+			$data = array(
+               'numComentarios' => $numComentarios
+            );
+
+			$this->db->where('userName', $username);
+			$this->db->update('Usuario', $data);
+		}
 	}
 ?>

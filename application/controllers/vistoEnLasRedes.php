@@ -253,6 +253,7 @@
 													$this->session->userdata('usuarioLogueado'), $id);
 
 			if($resultados) {
+				$this->Usuario_m->aumentarNumComentarios($this->session->userdata('usuarioLogueado'));
 				echo "<script>  alert('Comentario añadido correctamente');
 							window.location.href = '/iweb/index.php/vistoEnLasRedes/aportaciones/" . $id .  "';
 				   </script>"
