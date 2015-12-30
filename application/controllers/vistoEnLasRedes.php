@@ -70,7 +70,7 @@
 			$resultados = $this->Usuario_m->get_usuarioLogin($_POST['username'], $_POST['password']);
 
 			// Si es correcto sólo devolverá un usuario
-			if(count($resultados) == 1) {
+			if(count($resultados) == 1 && $resultados[0]->userName != "Anónimo") {
 				$this->session->set_userdata('usuarioLogueado', $resultados[0]->userName);
 
 				echo "<script>  alert('Login correcto');
@@ -158,7 +158,7 @@
 			$resultados = $this->Usuario_m->get_usuarioRecuperacionDatos($email);
 
 			// Si es correcto sólo devolverá un usuario
-			if(count($resultados) == 1) {
+			if(count($resultados) == 1  && $resultados[0]->userName != "Anónimo") {
 				// Enviar email
 				/*
 				 * El email no funciona. La función PHP me devuelve true pero no los recibo ni en hotmail ni el gmail. 
