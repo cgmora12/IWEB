@@ -162,14 +162,14 @@
 					<?php 
 						if($this->session->userdata('usuarioLogueado')) {
 					?>
-							<input class="form-control" type="text" id="username" name="username" disabled 
+							<input class="form-control" type="text" id="username" name="username" readonly
 								value="<?php echo $this->session->userdata('usuarioLogueado')?>"
 							>
 					<?php
 						}
 						else {
 					?>
-							<input class="form-control" type="text" id="username" name="username" value="Anónimo" disabled>
+							<input class="form-control" type="text" id="username" name="username" value="Anónimo" readonly>
 					<?php
 						}
 					?>

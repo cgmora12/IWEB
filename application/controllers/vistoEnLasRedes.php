@@ -287,5 +287,30 @@
 
 			$this->load->view('/vistoEnLasRedes/enviarAportacion', $datos);
 		}
+
+		public function guardarAportacion()
+		{
+			$idInsertado = $this->Aportacion_m->insert_nuevaAportacion($_POST['titulo'], $_POST['imagen'], $_POST['fuente'],
+																		$_POST['username'], $_POST['categoria']);
+			
+			if($idInsertado) {
+				$this->Usuario_m->aumentarNumAportaciones($_POST['username']);
+
+				if($_POST['etiqueta'] != "sinElegir") {
+					$resultadosEtiquetas = $this->Aportacion_m->insert_etiquetaAportacion($_POST['etiqueta'], $idInsertado);
+				}
+
+				echo "<script>  alert('Aportación guardada correctamente');
+							window.location.href = '/iweb/index.php/vistoEnLasRedes/aportaciones/" . $idInsertado . "';
+				   </script>"
+				;
+			}
+			else {
+				echo "<script>  alert('No se ha podido guardar la aportación');
+							window.history.back();
+				   </script>"
+				;
+			}
+		}
 	}
 ?>

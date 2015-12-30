@@ -50,5 +50,21 @@
 			$this->db->where('userName', $username);
 			$this->db->update('Usuario', $data);
 		}
+
+		function aumentarNumAportaciones($username) {
+			$this->db->select('numAportaciones');
+			$this->db->where('userName', $username);
+			$resultados = $this->db->get("Usuario")->result();
+
+			$numAportaciones = $resultados[0]->numAportaciones;
+			$numAportaciones++;
+
+			$data = array(
+               'numAportaciones' => $numAportaciones
+            );
+
+			$this->db->where('userName', $username);
+			$this->db->update('Usuario', $data);
+		}
 	}
 ?>

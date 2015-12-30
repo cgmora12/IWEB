@@ -46,7 +46,8 @@ $route['404_override'] = '';
  */
 $route['vistoEnLasRedes/aportaciones/(:num)'] = "/vistoEnLasRedes/verAportacion/$1";
 $route['vistoEnLasRedes/aportaciones/(:num)/comentarAportacion'] = "/vistoEnLasRedes/comentarAportacion/$1";
-$route['vistoEnLasRedes/aportaciones/enviarAportacion'] = "/vistoEnLasRedes/enviarAportacion/";
+$route['vistoEnLasRedes/aportaciones/enviarAportacion'] = "/vistoEnLasRedes/enviarAportacion";
+$route['vistoEnLasRedes/aportaciones/guardarAportacion'] = "/vistoEnLasRedes/guardarAportacion";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

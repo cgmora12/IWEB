@@ -33,5 +33,33 @@
 			$resultados = $this->db->insert('Comentario', $data);
 			return $resultados;
 		}
+
+		function insert_nuevaAportacion($titulo, $imagenUrl, $fuenteUrl, $creadorUserName, $nombreCategoria) {
+
+			$data = array(
+			   'titulo' => $titulo,
+			   'imagenUrl' => $imagenUrl,
+			   'fuenteUrl' => $fuenteUrl,
+			   'fecha' => date('Y-m-d'),
+			   'creadorUserName' => $creadorUserName,
+			   'nombreCategoria' => $nombreCategoria
+			);
+
+			$resultados = $this->db->insert('Aportacion', $data);
+			$insert_id = $this->db->insert_id();
+
+			return $insert_id;
+		}
+
+		function insert_etiquetaAportacion($etiquetaValor, $aportacionOid) {
+
+			$data = array(
+			   'etiquetaValor' => $etiquetaValor,
+			   'aportacionOid' => $aportacionOid
+			);
+
+			$resultados = $this->db->insert('Etiqueta_aportacion', $data);
+			return $resultados;
+		}
 	}
 ?>
