@@ -23,6 +23,8 @@
 			$this->load->library('session');
 			$this->load->model("Usuario_m", '', TRUE);
 			$this->load->model("Aportacion_m", '', TRUE);
+			$this->load->model("Categoria_m", '', TRUE);
+			$this->load->model("Etiqueta_m", '', TRUE);
 		}
 
 		// Página principal
@@ -247,6 +249,8 @@
 			}
 		}
 
+
+		// Funcionalidad comentar aportación
 		public function comentarAportacion($id)
 		{
 			$resultados = $this->Aportacion_m->insert_comentarioAportacion($_POST['comentario'], 
@@ -265,6 +269,23 @@
 				   </script>"
 				;
 			}
+		}
+
+
+		// Funcionalidad enviar aportación
+		public function enviarAportacion()
+		{
+			// Categorías
+			$resultadosCategorias = $this->Categoria_m->get_all();
+			$datos['listaCategorias'] = $resultadosCategorias;
+			$datos['numCategorias'] = count($resultadosCategorias);
+
+			// Etiquetas
+			$resultadosEtiquetas = $this->Etiqueta_m->get_all();
+			$datos['listaEtiquetas'] = $resultadosEtiquetas;
+			$datos['numEtiquetas'] = count($resultadosEtiquetas);
+
+			$this->load->view('/vistoEnLasRedes/enviarAportacion', $datos);
 		}
 	}
 ?>
