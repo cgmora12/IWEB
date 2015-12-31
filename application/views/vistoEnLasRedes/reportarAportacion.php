@@ -77,7 +77,7 @@
 						if($this->session->userdata('usuarioLogueado')) {
 					?>
 							<input class="form-control" type="text" id="username" name="username" readonly
-								value="<?php echo $this->session->userdata('usuarioLogueado')?>"
+								value="<?php echo $this->session->userdata('usuarioLogueado') ?>"
 							>
 					<?php
 						}

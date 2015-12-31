@@ -25,6 +25,7 @@
 			$this->load->model("Aportacion_m", '', TRUE);
 			$this->load->model("Categoria_m", '', TRUE);
 			$this->load->model("Etiqueta_m", '', TRUE);
+			$this->load->model("Reporte_m", '', TRUE);
 		}
 
 		// Página principal
@@ -328,6 +329,25 @@
 			}
 			else {
 				echo "No existe ninguna aportación con id " . $id;
+			}
+		}
+
+		public function guardarReporteAportacion($idAportacion)
+		{
+			$resultados = $this->Reporte_m->insert_nuevoReporte($_POST['motivo'], $idAportacion, $_POST['username']);
+			
+			if($resultados) {
+
+				echo "<script>  alert('Reporte guardado correctamente');
+							window.location.href = '/iweb/index.php/vistoEnLasRedes/aportaciones/" . $idAportacion . "';
+				   </script>"
+				;
+			}
+			else {
+				echo "<script>  alert('No se ha podido guardar el reporte');
+							window.history.back();
+				   </script>"
+				;
 			}
 		}
 	}
