@@ -101,7 +101,7 @@
 				</p>
 				<br>
 				<p>
-					<a href="<?php echo $idAportacion; ?>/reportar">Reportar por inapropiado</a> 
+					<a href="<?php echo $idAportacion; ?>/reportarAportacion">Reportar por inapropiado</a> 
 				</p>
 				<br>
 			</div>

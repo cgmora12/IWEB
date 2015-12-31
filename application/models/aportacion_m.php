@@ -1,5 +1,14 @@
 <?php 
 	class Aportacion_m extends CI_model {
+
+		// Para comprobar si la aportación existe
+		function get_aportacionId($id) {
+			$this->db->select('oid');
+			$this->db->where('oid', $id);
+
+			return $this->db->get("Aportacion")->result();
+		}
+
 		function get_aportacion($id) {
 			$this->db->select('titulo, imagenUrl, fuenteUrl, fecha, creadorUserName, nombreCategoria');
 			$this->db->where('oid', $id);

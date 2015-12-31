@@ -48,6 +48,7 @@ $route['vistoEnLasRedes/aportaciones/(:num)'] = "/vistoEnLasRedes/verAportacion/
 $route['vistoEnLasRedes/aportaciones/(:num)/comentarAportacion'] = "/vistoEnLasRedes/comentarAportacion/$1";
 $route['vistoEnLasRedes/aportaciones/enviarAportacion'] = "/vistoEnLasRedes/enviarAportacion";
 $route['vistoEnLasRedes/aportaciones/guardarAportacion'] = "/vistoEnLasRedes/guardarAportacion";
+$route['vistoEnLasRedes/aportaciones/(:num)/reportarAportacion'] = "/vistoEnLasRedes/reportarAportacion/$1";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

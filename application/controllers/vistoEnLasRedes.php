@@ -312,5 +312,23 @@
 				;
 			}
 		}
+
+
+		// Funcionalidad reportar aportación
+		public function reportarAportacion($id)
+		{
+			$datos['idAportacion'] = $id;
+			// Sólo me hace falta para comprobar si existe una aportación con ese id
+			$resultados = $this->Aportacion_m->get_aportacionId($id);
+
+			// Si es correcto sólo devolverá una aportación
+			if(count($resultados) == 1) {
+
+				$this->load->view('/vistoEnLasRedes/reportarAportacion', $datos);
+			}
+			else {
+				echo "No existe ninguna aportación con id " . $id;
+			}
+		}
 	}
 ?>
