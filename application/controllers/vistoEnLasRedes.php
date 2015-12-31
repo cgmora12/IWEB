@@ -23,6 +23,8 @@
 			$this->load->library('session');
 			$this->load->model("Usuario_m", '', TRUE);
 			$this->load->model("Aportacion_m", '', TRUE);
+			$this->load->model("EtiquetaAportacion_m", '', TRUE);
+			$this->load->model("Comentario_m", '', TRUE);
 			$this->load->model("Categoria_m", '', TRUE);
 			$this->load->model("Etiqueta_m", '', TRUE);
 			$this->load->model("Reporte_m", '', TRUE);
@@ -235,11 +237,11 @@
 				// Aportación (ya tiene la categoría)
 				$datos['aportacion'] = $resultados[0];
 				// Etiquetas
-				$resultadosEtiquetas = $this->Aportacion_m->get_etiquetasAportacion($id);
+				$resultadosEtiquetas = $this->EtiquetaAportacion_m->get_etiquetasAportacion($id);
 				$datos['listaEtiquetas'] = $resultadosEtiquetas;
 				$datos['numEtiquetas'] = count($resultadosEtiquetas);
 				// Comentarios
-				$resultadosComentarios = $this->Aportacion_m->get_comentariosAportacion($id);
+				$resultadosComentarios = $this->Comentario_m->get_comentariosAportacion($id);
 				$datos['listaComentarios'] = $resultadosComentarios;
 				$datos['numComentarios'] = count($resultadosComentarios);
 
@@ -254,7 +256,7 @@
 		// Funcionalidad comentar aportación
 		public function comentarAportacion($id)
 		{
-			$resultados = $this->Aportacion_m->insert_comentarioAportacion($_POST['comentario'], 
+			$resultados = $this->Comentario_m->insert_comentarioAportacion($_POST['comentario'], 
 													$this->session->userdata('usuarioLogueado'), $id);
 
 			if($resultados) {
@@ -298,7 +300,7 @@
 				$this->Usuario_m->aumentarNumAportaciones($_POST['username']);
 
 				if($_POST['etiqueta'] != "sinElegir") {
-					$resultadosEtiquetas = $this->Aportacion_m->insert_etiquetaAportacion($_POST['etiqueta'], $idInsertado);
+					$resultadosEtiquetas = $this->EtiquetaAportacion_m->insert_etiquetaAportacion($_POST['etiqueta'], $idInsertado);
 				}
 
 				echo "<script>  alert('Aportación guardada correctamente');

@@ -111,29 +111,38 @@
 			<div id="comentariosAportacion">
 				<legend>Comentarios</legend>
 				<?php 
-					$i = 1;
-					foreach($listaComentarios as $comentario) {
+					if($numComentarios == 0) {
 				?>
-						<div class="alert alert-info" id="<?php echo 'comentario' . $i; ?>">
+						La aportación aún no tiene ningún comentario.
+						<br>
+						<br>
 				<?php
-								echo '<b>#' . $i . '</b>';
-								echo '<br> <b>Autor:</b> ';
+					}
+					else {
+						$i = 1;
+						foreach($listaComentarios as $comentario) {
 				?>
-								<a href="#">
-									<?php echo $comentario->autorUserName; ?>
-								</a>
+							<div class="alert alert-info" id="<?php echo 'comentario' . $i; ?>">
 				<?php
-								echo '<br><b>Fecha:</b> ' . date('d-m-Y', strtotime($comentario->fecha));
+									echo '<b>#' . $i . '</b>';
+									echo '<br> <b>Autor:</b> ';
 				?>
-								<p style="color: black">
+									<a href="#">
+										<?php echo $comentario->autorUserName; ?>
+									</a>
 				<?php
-								echo '<br><b>Comentario:</b><br>' . $comentario->cuerpo;
+									echo '<br><b>Fecha:</b> ' . date('d-m-Y', strtotime($comentario->fecha));
 				?>
+									<p style="color: black">
+				<?php
+									echo '<br><b>Comentario:</b><br>' . $comentario->cuerpo;
+				?>
+									</p>
 								</p>
-							</p>
-						</div>
-				<?php
-					$i++;
+							</div>
+					<?php
+						$i++;
+						}
 					}
 				?>
 			</div>
