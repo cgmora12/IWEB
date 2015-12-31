@@ -41,6 +41,15 @@
 $route['default_controller'] = "home";
 $route['404_override'] = '';
 
+/* Rutas personalizadas, para hacerlo un poco más API REST
+ * Lo de la izquierda es la URL del navegador - Lo de la derecha es el método del controlador al cual se llamará
+ */
+$route['vistoEnLasRedes/aportaciones/(:num)'] = "/vistoEnLasRedes/verAportacion/$1";
+$route['vistoEnLasRedes/aportaciones/(:num)/comentarAportacion'] = "/vistoEnLasRedes/comentarAportacion/$1";
+$route['vistoEnLasRedes/aportaciones/enviarAportacion'] = "/vistoEnLasRedes/enviarAportacion";
+$route['vistoEnLasRedes/aportaciones/guardarAportacion'] = "/vistoEnLasRedes/guardarAportacion";
+$route['vistoEnLasRedes/aportaciones/(:num)/reportarAportacion'] = "/vistoEnLasRedes/reportarAportacion/$1";
+$route['vistoEnLasRedes/aportaciones/(:num)/guardarReporteAportacion'] = "/vistoEnLasRedes/guardarReporteAportacion/$1";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
