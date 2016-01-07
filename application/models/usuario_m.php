@@ -8,6 +8,22 @@
 			return $this->db->get("Usuario")->result();
 		}
 
+
+		function get_usuarioByUsername($username) {
+			$this->db->select('userName, email, avatarUrl, pais, provincia, localidad, fechaNacimiento, sexo, paginaWeb, fechaRegistro, numComentarios, numAportaciones');
+			$this->db->where('userName', $username);
+
+			return $this->db->get("Usuario")->result();
+		}
+
+
+		function get_usuarioAvatarByUsername($username) {
+			$this->db->select('avatarUrl');
+			$this->db->where('userName', $username);
+
+			return $this->db->get("Usuario")->result();
+		}
+
 		function insert_usuarioRegistrado($username, $password, $email, $avatar, $pais, $provincia, $localidad, $fechaNacimiento, $sexo, $paginaWeb) {
 
 			$data = array(
