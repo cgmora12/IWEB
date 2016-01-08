@@ -29,6 +29,13 @@
 			return $this->db->get("Aportacion")->result();
 		}
 
+		function get_aportacionesByUsuario($userName) {
+			$this->db->select('oid, titulo, imagenUrl, fuenteUrl, fecha, creadorUserName, nombreCategoria');
+			$this->db->where('creadorUserName', $userName);
+			$this->db->order_by("oid", "desc");
+			return $this->db->get("Aportacion")->result();
+		}
+
 		function get_aportaciones_by_categoria($categoria) {
 			$this->db->select('oid, titulo, imagenUrl, fuenteUrl, fecha, creadorUserName, nombreCategoria');
 			$this->db->where('nombreCategoria', $categoria);

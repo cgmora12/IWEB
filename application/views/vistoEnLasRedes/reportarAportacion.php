@@ -59,7 +59,7 @@
 				}
 				else {
 			?>
-					<input class="form-control" type="text" id="username" name="username" value="Anónimo" readonly>
+					<input class="form-control" type="text" id="username" name="username" value="Anonimo" readonly>
 			<?php
 				}
 			?>

@@ -58,7 +58,11 @@
 		<?php 
 			if($usuario->paginaWeb != null) {
 		?>	
-				<b>Página web:</b> <?php echo $usuario->paginaWeb; ?><br>
+				<b>Página web:</b>
+				<a href="<?php echo $usuario->paginaWeb; ?>">
+					<?php echo $usuario->paginaWeb; ?>
+				</a>
+				<br>
 
 		<?php
 			}
@@ -111,7 +115,7 @@
 							<p>
 								<span class="glyphicon glyphicon-globe"></span>
 								Vía: 
-								<a href="<?php base_url(); ?>/IWEB/vistoEnLasRedes/<?php echo $aportacionesUsuario[$i]->fuenteUrl; ?>">
+								<a href="<?php echo $aportacionesUsuario[$i]->fuenteUrl; ?>">
 									<?php echo $aportacionesUsuario[$i]->fuenteUrl; ?>
 								</a>
 							</p>

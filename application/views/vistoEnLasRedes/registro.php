@@ -187,6 +187,12 @@
 <main class="container" style="background-color: white;background-clip:content-box; ">
 	<h1 style="margin-left: 20px;" >Registro de nuevo usuario</h1>
 
+	<?php if($this->session->flashdata('registro') != null){ ?>
+		<div style="margin-left: 20px;margin-right: 20px;" class="alert alert-info">
+			<?php echo $this->session->flashdata('registro'); ?>
+		</div>
+	<?php } ?>
+
 	<div style="margin-left: 20px;"  id="sobreDatosForm">
 		<legend>¿Es nuevo? Regístrese a continuación.</legend>
 		<p>
@@ -330,14 +336,6 @@
 	<div style="margin-left: 20px;margin-right: 20px;" id="info" class="alert alert-info">
 		<p class="obligatorio">(*): Campo obligatorio</p>
 	</div>
-
-
-	<?php if($this->session->flashdata('registro') != null){ ?>
-		<br><br>
-		<div style="margin-left: 20px;margin-right: 20px;" class="alert alert-info">
-			<?php echo $this->session->flashdata('registro'); ?>
-		</div>
-	<?php } ?>
 
 	<br><br>
 </main>

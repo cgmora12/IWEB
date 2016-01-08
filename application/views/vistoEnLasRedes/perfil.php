@@ -60,7 +60,11 @@
 		<?php 
 			if($usuario->paginaWeb != null) {
 		?>	
-				<b>Página web:</b> <?php echo $usuario->paginaWeb; ?><br>
+				<b>Página web:</b> 
+				<a href="<?php echo $usuario->paginaWeb; ?>">
+					<?php echo $usuario->paginaWeb; ?>
+				</a>
+				<br>
 
 		<?php
 			}

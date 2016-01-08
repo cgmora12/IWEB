@@ -18,8 +18,6 @@
 		function __construct(){
 			parent::__construct();
 
-			$this->load->model("Agenda_m", '', TRUE);
-
 			$this->load->library('session');
 			$this->load->model("Usuario_m", '', TRUE);
 			$this->load->model("Aportacion_m", '', TRUE);
@@ -389,8 +387,7 @@
 			}
 			else {
 				$this->session->set_flashdata('registro', 'Nombre de usuario y/o email ya registrados. Inténtelo de nuevo.');
-				echo "<script>  window.history.back();
-								window.location.reload();
+				echo "<script>  window.location.href = 'registro';
 				   </script>"
 				;
 			}

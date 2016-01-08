@@ -38,7 +38,7 @@
 							<p>
 								<span class="glyphicon glyphicon-globe"></span>
 								Vía: 
-								<a href="<?php base_url(); ?>/IWEB/vistoEnLasRedes/<?php echo $aportaciones[$i]->fuenteUrl; ?>">
+								<a href="<?php echo $aportaciones[$i]->fuenteUrl; ?>">
 									<?php echo $aportaciones[$i]->fuenteUrl; ?>
 								</a>
 							</p>
